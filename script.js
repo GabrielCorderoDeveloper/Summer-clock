@@ -1,11 +1,12 @@
 //It will call the function setClock every second.
 setInterval(setClock, 1000)
 //It will change the background every 6 seconds
-setInterval(getUnsplashImage, 6000);
+//! setInterval(getUnsplashImage, 6000);
 
 const hourHand = document.querySelector('[data-hour-hand]');
 const minuteHand = document.querySelector('[data-minute-hand]');
 const secondHand = document.querySelector('[data-second-hand]');
+const clockDate = document.querySelector('[data-clock-date]');
 
 //This function will update the hanldes of the clock
 function setClock() {
@@ -13,10 +14,12 @@ function setClock() {
     const secondsRatio = currentDate.getSeconds() / 60;
     const minutesRatio = (secondsRatio + currentDate.getMinutes()) / 60;
     const hoursRatio = (minutesRatio + currentDate.getHours()) / 12;
+    const day = currentDate.getDay();
 
     setRotation(secondHand, secondsRatio);
     setRotation(minuteHand, minutesRatio);
     setRotation(hourHand, hoursRatio);
+    clockDate.innerHTML = `<p>${day}</p>`
 }
 
 function setRotation(element, rotationRatio) {

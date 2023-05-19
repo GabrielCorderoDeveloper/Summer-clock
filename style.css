@@ -22,13 +22,42 @@ body {
 }
 
 .clock {
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 50%;
-    border: 3px solid gray;
+    border: 8px solid rgb(105, 109, 113);
     margin: 0 auto;
     position: relative;
+}
+
+.crown {
+    position: absolute;
+    width: 15px;
+    height: 30px;
+    background-color: rgb(105, 109, 113);
+    border-right:2px solid rgb(80, 80, 80);
+    top: 45%;
+    right: -7%;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.date {
+    position: absolute;
+    width: 40px;
+    height: 25px;
+    background: linear-gradient(to right, rgb(255, 255, 255), rgb(226, 227, 227));
+    border-left:2px solid rgb(80, 80, 80);
+    border-top:2px solid rgb(164, 164, 164);
+    border-bottom:2px solid rgb(52, 52, 52);
+    border-right:2px solid rgb(199, 199, 199);
+    top: 45%;
+    right: 15%;
+}
+.date > p {
+    font-size: 1.4rem;
+    color: rgba(125, 125, 125);
+    margin: -5px 0 0px 10px;
 }
 
 .clock .number {
@@ -59,7 +88,7 @@ body {
     position: absolute;
     bottom: 50%;
     left: 50%;
-    border: 2px solid rgb(255, 255, 255);
+    /* border: 2px solid rgb(255, 255, 255); */
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     transform-origin: bottom;
@@ -78,23 +107,84 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    border: 2px solid rgb(255, 255, 255);
 }
 
 .clock .hand.second {
-    width: 3px;
+    width: 2px;
     height: 45%;
     background-color: red;
 }
 
 .clock .hand.minute {
-    width: 7px;
+    width: 3px;
     height: 40%;
     background-color: black;
 }
 
 .clock .hand.hour {
-    width: 10px;
+    width: 6px;
     height: 35%;
     background-color: black;
+}
+
+.bi-gear-wide {
+    color: rgba(0, 0, 0, 0.3);
+    width: 160px;
+    height: 160px;
+    position: absolute;
+    top: -30px;
+    left: 0px;
+    z-index: -2;
+}
+
+.bi-gear-wide-connected{
+    color: rgba(0, 0, 0, 0.14);
+    width: 260px;
+    height: 260px;
+    position: absolute;
+    top: -30px;
+    right: -60px;
+    z-index: -2;
+}
+
+@keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .rotate-animation {
+    animation: rotation 80s linear infinite;
+  }
+  .rotate-animation-fast {
+    animation: rotation 20s linear infinite;
+  }
+
+  /*~ Phone variant <-----------------------------------------------------------------------*/
+  @media (max-width: 600px) {
+    .clock {
+        width: 250px;
+        height: 250px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 50%;
+        border: 8px solid rgb(105, 109, 113);
+        margin: 0 auto;
+        position: relative;
+    }
+    .clock .number {
+        font-size: 1.2rem;
+    }
+
+    .bi-gear-wide {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .bi-gear-wide-connected{
+        width: 200px;
+        height: 200px;
+    }
 }
