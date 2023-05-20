@@ -9,10 +9,11 @@ const clockDate = document.querySelector('[data-clock-date]');
 //This function will update the hanldes of the clock
 function setClock() {
     const currentDate = new Date();
+    const day = currentDate.getDate();
     const secondsRatio = currentDate.getSeconds() / 60;
     const minutesRatio = (secondsRatio + currentDate.getMinutes()) / 60;
     const hoursRatio = (minutesRatio + currentDate.getHours()) / 12;
-    const day = currentDate.getDay();
+
 
     setRotation(secondHand, secondsRatio);
     setRotation(minuteHand, minutesRatio);

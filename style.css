@@ -53,9 +53,9 @@ body {
     right: 15%;
 }
 .date > p {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     color: rgba(125, 125, 125);
-    margin: -5px 0 0px 10px;
+    margin: -5px 0 5px 5px;
 }
 
 .clock .number {
