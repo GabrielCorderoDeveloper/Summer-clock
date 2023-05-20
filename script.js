@@ -58,7 +58,9 @@ function getUnsplashImages() {
 function changeBackgroundImage() {
   const randomIndex = Math.floor(Math.random() * imageUrls.length);
   const imageUrl = imageUrls[randomIndex];
-  document.body.style.backgroundImage = `url('${imageUrl}')`;
+  if (imageUrl) { //If the API fails, the default image wont be changed.
+    document.body.style.backgroundImage = `url('${imageUrl}')`;
+  }
 }
 
 //Executing functions when page is loaded
