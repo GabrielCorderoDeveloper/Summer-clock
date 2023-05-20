@@ -197,7 +197,7 @@ body {
 
 .social-media {
     width: 100vw;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.4);
     height: 110px;
     position: absolute;
     bottom: 0;
@@ -206,6 +206,8 @@ body {
     justify-content: space-around;
     padding-top: 20px;
     padding-left: 4%;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
 }
 .social-media svg {
     width: 50px;
