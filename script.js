@@ -28,19 +28,40 @@ function setRotation(element, rotationRatio) {
 
 //2? Changing the background using Unsplash API
 const key = 'koTlmoMUfSn6Z4ZfvydHX7dvIrSzKgsb5hTWP_iYKsM';
-function getUnsplashImage() {
-fetch(`https://api.unsplash.com/photos/random?query=beach&orientation=landscape&client_id=${key}`)
-.then(response => response.json())
-.then(data => {
-    console.log(data)
-    const imageUrl = data.urls.regular;
-    document.body.style.backgroundImage = `url('${imageUrl}')`;
-})
-.catch(error => {
-    console.log('Error when loading image:', error);
-});
+let imageUrls = [];
+
+function getUnsplashImages() {
+  const requests = [];
+//It fetches 5 different images of beach and storages them on imageUrls
+  for (let i = 0; i < 5; i++) {
+    const request = fetch(`https://api.unsplash.com/photos/random?query=beach&orientation=landscape&client_id=${key}`)
+      .then(response => response.json())
+      .then(data => {
+        const imageUrl = data.urls.regular;
+        imageUrls[i] = imageUrl;
+      })
+      .catch(error => {
+        console.log('Error when loading image:', error);
+      });
+
+    requests.push(request);
+  }
+
+  Promise.all(requests)
+    .then(() => {
+      changeBackgroundImage()
+      //It changes the background every 6 seconds
+      setInterval(changeBackgroundImage, 6000);
+    });
+}
+
+//It selects randomly one of the 5 storaged images
+function changeBackgroundImage() {
+  const randomIndex = Math.floor(Math.random() * imageUrls.length);
+  const imageUrl = imageUrls[randomIndex];
+  document.body.style.backgroundImage = `url('${imageUrl}')`;
 }
 
 //Executing functions when page is loaded
 setClock();
-getUnsplashImage();
+getUnsplashImages();
