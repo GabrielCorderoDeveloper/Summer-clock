@@ -1,7 +1,5 @@
 //It will call the function setClock every second.
 setInterval(setClock, 1000)
-//It will change the background every 8 seconds
-// setInterval(getUnsplashImage, 8000);
 
 const hourHand = document.querySelector('[data-hour-hand]');
 const minuteHand = document.querySelector('[data-minute-hand]');
@@ -65,4 +63,4 @@ function changeBackgroundImage() {
 
 //Executing functions when page is loaded
 setClock();
-// getUnsplashImages();
+getUnsplashImages();

@@ -3,7 +3,6 @@
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-weight: bold;
 }
-
 body {
     display: flex;
     justify-content: center;
@@ -20,7 +19,7 @@ body {
     transition: background-image 1.5s;
     backdrop-filter: blur(5px);
 }
-
+/* Clock ----------------------> */
 .clock {
     width: 300px;
     height: 300px;
@@ -30,7 +29,6 @@ body {
     margin: 0 auto;
     position: relative;
 }
-
 .crown {
     position: absolute;
     width: 12px;
@@ -95,7 +93,6 @@ body {
     z-index: 10;
     transform: translateX(-50%) rotate(calc(var(--rotation) * 1deg));
 }
-
 .clock::after {
     content: '';
     position: absolute;
@@ -108,25 +105,21 @@ body {
     transform: translate(-50%, -50%);
     border-radius: 50%;
 }
-
 .clock .hand.second {
     width: 2px;
     height: 45%;
     background-color: red;
 }
-
 .clock .hand.minute {
     width: 3px;
     height: 40%;
     background-color: black;
 }
-
 .clock .hand.hour {
     width: 6px;
     height: 35%;
     background-color: black;
 }
-
 .bi-gear-wide {
     color: rgba(0, 0, 0, 0.3);
     width: 160px;
@@ -136,7 +129,6 @@ body {
     left: 0px;
     z-index: -2;
 }
-
 .bi-gear-wide-connected{
     color: rgba(0, 0, 0, 0.14);
     width: 260px;
@@ -146,7 +138,6 @@ body {
     right: -60px;
     z-index: -2;
 }
-
 .name{
     color: rgb(223, 223, 223);
     text-shadow: 1px 1px 0 rgb(73, 73, 73);
@@ -157,6 +148,7 @@ body {
     z-index: 1;
 }
 
+/* Animations ----------------------> */
 @keyframes rotation {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -195,6 +187,7 @@ body {
     100% { transform: translateY(0px); opacity: 1; }
 }
 
+/* Social Media ----------------------> */
 .social-media {
     width: 100vw;
     background-color: rgba(255, 255, 255, 0.4);
