@@ -191,19 +191,54 @@ body {
     animation: down 1s ease-in-out;
 }
 @keyframes down {
-    0% { transform: translateY(70px); opacity: 0.5;  }
+    0% { transform: translateY(100px); opacity: 0.5;  }
     100% { transform: translateY(0px); opacity: 1; }
 }
 
 .social-media {
     width: 100vw;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.3);
     height: 110px;
     position: absolute;
     bottom: 0;
     left: 0;
-    filter: blur(5px);
+    display: flex;
+    justify-content: space-around;
+    padding-top: 20px;
+    padding-left: 4%;
 }
+.social-media svg {
+    width: 50px;
+    height: 50px;
+    transition: 0.3s;
+}
+.social-media svg.bi-linkedin {
+    color: #0A66C2;
+}
+.social-media svg.bi-github {
+    color: #9354AD;
+}
+.social-media svg:hover {
+    transform: translateY(-10px)  rotate(15deg);
+    filter: brightness(150%);
+}
+.social-media img {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+.social-media img:hover  {
+    transform: translateY(-10px)  rotate(15deg);
+    filter: brightness(130%);
+}
+.social-media p {
+    font-size: 1rem;
+    text-align: center;
+    margin-left: -50%;
+    color: rgb(82, 82, 82);
+}
+.social-media a { text-decoration: none; width: fit-content; }
 
   /*~ Phone variant <-----------------------------------------------------------------------*/
   @media (max-width: 600px) {
@@ -219,19 +254,41 @@ body {
     .clock .number {
         font-size: 1.2rem;
     }
-
     .bi-gear-wide {
         width: 120px;
         height: 120px;
     }
-    
     .bi-gear-wide-connected{
-        width: 200px;
-        height: 200px;
+        width: 170px;
+        height: 170px;
+        right: -40px;
     }
-
     .name{
         font-size: 0.6rem;
         right: 32%;
+    }
+    .social-media {
+        padding-left: 9%;
+    }
+}
+      /*~ Small Phone variant <-----------------------------------------------------------------------*/
+  @media (max-width: 500px) {
+
+    .bi-gear-wide {
+        width: 100px;
+        height: 100px;
+    }
+    .bi-gear-wide-connected{
+        width: 170px;
+        height: 170px;
+        right: 30px;
+        top: 100px;
+    }
+    .name{
+        font-size: 0.6rem;
+        right: 32%;
+    }
+    .social-media {
+        padding-left: 9%;
     }
 }
