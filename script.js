@@ -18,6 +18,11 @@ function setClock() {
     setRotation(minuteHand, minutesRatio);
     setRotation(hourHand, hoursRatio);
     clockDate.innerHTML = `<p>${day}</p>`
+    
+    //Playing the sound
+    const audio = document.getElementById("sound");
+    audio.volume = 0.1;
+    audio.play();
 }
 
 function setRotation(element, rotationRatio) {
