@@ -214,7 +214,7 @@ body {
     color: #9354AD;
 }
 .social-media svg:hover {
-    transform: translateY(-10px)  rotate(15deg);
+    transform: translateY(-10px)  rotate(-15deg);
     filter: brightness(150%);
 }
 .social-media img {
@@ -224,7 +224,7 @@ body {
     transition: 0.3s;
 }
 .social-media img:hover  {
-    transform: translateY(-10px)  rotate(15deg);
+    transform: translateY(-10px)  rotate(-15deg);
     filter: brightness(130%);
 }
 .social-media p {
