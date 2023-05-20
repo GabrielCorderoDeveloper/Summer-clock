@@ -13,7 +13,7 @@ body {
     user-select: none;
 
     /* Background Styling */
-    background-image: url(''); /* First Image */
+    background-image: url('https://hips.hearstapps.com/hmg-prod/images/champagne-beach-espiritu-santo-island-vanuatu-royalty-free-image-1655672510.jpg?crop=1.00xw:0.752xh;0,0.173xh&resize=1200:*'); /* First Image */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -158,20 +158,51 @@ body {
 }
 
 @keyframes rotation {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  
-  .rotate-animation {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.rotate-animation {
     animation: rotation 80s linear infinite;
-  }
-  .rotate-animation-fast {
+}
+.rotate-animation-fast {
     animation: rotation 20s linear infinite;
-  }
+}
+
+.up-animation {
+    animation: up 1s ease-in-out;
+}
+.up-animation-fast {
+    animation: up 0.6s ease-in-out;
+}
+@keyframes up {
+    0% { transform: translateY(-70px); opacity: 0.5;  }
+    100% { transform: translateY(0px); opacity: 1; }
+}
+
+.fade-animation {
+    animation: fade 1.5s ease-in-out;
+}
+@keyframes fade {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.down-animation {
+    animation: down 1s ease-in-out;
+}
+@keyframes down {
+    0% { transform: translateY(70px); opacity: 0.5;  }
+    100% { transform: translateY(0px); opacity: 1; }
+}
+
+.social-media {
+    width: 100vw;
+    background-color: rgba(255, 255, 255, 0.3);
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
 
   /*~ Phone variant <-----------------------------------------------------------------------*/
   @media (max-width: 600px) {

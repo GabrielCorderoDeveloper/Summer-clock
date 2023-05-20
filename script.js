@@ -37,6 +37,7 @@ function getUnsplashImages() {
     const request = fetch(`https://api.unsplash.com/photos/random?query=beach&orientation=landscape&client_id=${key}`)
       .then(response => response.json())
       .then(data => {
+
         const imageUrl = data.urls.regular;
         imageUrls[i] = imageUrl;
       })
@@ -64,4 +65,4 @@ function changeBackgroundImage() {
 
 //Executing functions when page is loaded
 setClock();
-getUnsplashImages();
+// getUnsplashImages();
