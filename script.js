@@ -65,4 +65,4 @@ function changeBackgroundImage() {
 
 //Executing functions when page is loaded
 setClock();
-// getUnsplashImages();
+getUnsplashImages();
