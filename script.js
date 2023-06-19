@@ -73,13 +73,13 @@ function changeBackgroundImage() {
 setClock();
 getUnsplashImages();
 
-//Getting the location
+// Getting the location
 function json(url) {
   return fetch(url).then(res => res.json());
 }
 let apiKey = 'acd5af07cb8f29c02d28a51e24e9a183aaa6593103c9c70f0caeb97e';
 json(`https://api.ipdata.co?api-key=${apiKey}`).then(data => {
-  document.querySelector('#city').innerHTML = `${data.city} ${data.country_code}`
+  document.querySelector('#city').innerHTML = `${data.city}`
   getInfo(data.city, data.city)
 });
 
@@ -101,13 +101,13 @@ try {
 
   document.querySelector('#temp').innerHTML = result.current.temp_f + 'F';
   //selecting the image
-  if(result.current.condition.text == 'Clouds') {
+  if(result.current.condition.text === 'Clouds' || result.current.condition.text === 'Partly cloudy' || result.current.condition.text === 'Overcast') {
     weatherIcon.src = './assets/weather/clouds.gif';
   } 
-  else if(result.current.condition.text == 'Sunny' || 'Clear') {
+  else if(result.current.condition.text === 'Sunny' || result.current.condition.text ===  'Clear') {
     weatherIcon.src = './assets/weather/clear.gif';
   } 
-  else if(result.current.condition.text == 'Rain') {
+  else if(result.current.condition.text === 'Rain' || result.current.condition.text ===  'Patchy light rain') {
     weatherIcon.src = './assets/weather/rain.gif';
   } 
   else if(result.current.condition.text == 'Drizzle') {
@@ -121,13 +121,12 @@ try {
   }
   else if(result.current.condition.text == 'Snow') {
     weatherIcon.src = './assets/weather/snow.gif';
+  } else {
+    //If the case is different it will chose an image given by the API
+    weatherIcon.src = result.current.condition.icon;
   }
   
   } catch (error) {
     console.error(error);
   }
 }
-
-
-
-
