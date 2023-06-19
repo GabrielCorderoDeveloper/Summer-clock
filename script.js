@@ -71,4 +71,27 @@ function changeBackgroundImage() {
 
 //Executing functions when page is loaded
 setClock();
-getUnsplashImages();
+//? getUnsplashImages();
+
+
+//Getting the location
+function json(url) {
+  return fetch(url).then(res => res.json());
+}
+let apiKey = 'acd5af07cb8f29c02d28a51e24e9a183aaa6593103c9c70f0caeb97e';
+json(`https://api.ipdata.co?api-key=${apiKey}`).then(data => {
+  console.log(data.ip);
+  console.log(data.city);
+  console.log(data.country_code);
+  // so many more properties
+  getInfo()
+});
+
+
+
+async function getInfo() {
+
+}
+
+
+
