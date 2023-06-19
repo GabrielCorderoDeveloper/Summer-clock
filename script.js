@@ -71,55 +71,63 @@ function changeBackgroundImage() {
 
 //Executing functions when page is loaded
 setClock();
-//? getUnsplashImages();
-
+getUnsplashImages();
 
 //Getting the location
-// function json(url) {
-//   return fetch(url).then(res => res.json());
-// }
-// let apiKey = 'acd5af07cb8f29c02d28a51e24e9a183aaa6593103c9c70f0caeb97e';
-// json(`https://api.ipdata.co?api-key=${apiKey}`).then(data => {
-//   console.log(data.ip);
-//   console.log(data.city);
-//   console.log(data.city);
-//   document.querySelector('#city').innerHTML = `${data.city} ${data.country_code}`
-//   getInfo(data.city, data.city)
-// });
+function json(url) {
+  return fetch(url).then(res => res.json());
+}
+let apiKey = 'acd5af07cb8f29c02d28a51e24e9a183aaa6593103c9c70f0caeb97e';
+json(`https://api.ipdata.co?api-key=${apiKey}`).then(data => {
+  document.querySelector('#city').innerHTML = `${data.city} ${data.country_code}`
+  getInfo(data.city, data.city)
+});
 
+//Getting the weather
 async function getInfo(city, country) {
-  const API_key = 'b3a9cd31a4382b4b2ba50d5b8ae36c85';
-  const weatherIcon = document.querySelector('#weather_icon');
+  const url = `https://weatherapi-com.p.rapidapi.com/current.json?q=${city},${country}`;
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': '6831504ae3msh40a056fefd5ddf3p10a4fdjsnb13521a2d0cb',
+      'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
+    }
+};
 
-  const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q={${city}},{${country}}&appid={${API_key}}`)
+const weatherIcon = document.querySelector('#weather_icon');
+try {
+	const response = await fetch(url, options);
+	const result = await response.json();
 
-  var data = await response.json();
-  console.log(data);
-
-  document.querySelector('#temp').innerHTML = Math.round(data.main.temp) + 'F';
+  document.querySelector('#temp').innerHTML = result.current.temp_f + 'F';
   //selecting the image
-  if(data.weather[0].main == 'Clouds') {
+  if(result.current.condition.text == 'Clouds') {
     weatherIcon.src = './assets/weather/clouds.gif';
   } 
-  else if(data.weather[0].main == 'Clear') {
+  else if(result.current.condition.text == 'Sunny' || 'Clear') {
     weatherIcon.src = './assets/weather/clear.gif';
   } 
-  else if(data.weather[0].main == 'Rain') {
+  else if(result.current.condition.text == 'Rain') {
     weatherIcon.src = './assets/weather/rain.gif';
   } 
-  else if(data.weather[0].main == 'Drizzle') {
+  else if(result.current.condition.text == 'Drizzle') {
     weatherIcon.src = './assets/weather/drizzle.gif';
   } 
-  else if(data.weather[0].main == 'Mist') {
+  else if(result.current.condition.text == 'Mist') {
     weatherIcon.src = './assets/weather/mist.gif';
   }
-  else if(data.weather[0].main == 'Thunderstorm') {
+  else if(result.current.condition.text == 'Thunderstorm') {
     weatherIcon.src = './assets/weather/thunderstorm.gif';
   }
-  else if(data.weather[0].main == 'Snow') {
+  else if(result.current.condition.text == 'Snow') {
     weatherIcon.src = './assets/weather/snow.gif';
+  }
+  
+  } catch (error) {
+    console.error(error);
   }
 }
 
 
-getInfo('lindenhurst', 'US')
+
+
