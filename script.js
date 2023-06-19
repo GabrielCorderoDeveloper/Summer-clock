@@ -75,23 +75,51 @@ setClock();
 
 
 //Getting the location
-function json(url) {
-  return fetch(url).then(res => res.json());
+// function json(url) {
+//   return fetch(url).then(res => res.json());
+// }
+// let apiKey = 'acd5af07cb8f29c02d28a51e24e9a183aaa6593103c9c70f0caeb97e';
+// json(`https://api.ipdata.co?api-key=${apiKey}`).then(data => {
+//   console.log(data.ip);
+//   console.log(data.city);
+//   console.log(data.city);
+//   document.querySelector('#city').innerHTML = `${data.city} ${data.country_code}`
+//   getInfo(data.city, data.city)
+// });
+
+async function getInfo(city, country) {
+  const API_key = 'b3a9cd31a4382b4b2ba50d5b8ae36c85';
+  const weatherIcon = document.querySelector('#weather_icon');
+
+  const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q={${city}},{${country}}&appid={${API_key}}`)
+
+  var data = await response.json();
+  console.log(data);
+
+  document.querySelector('#temp').innerHTML = Math.round(data.main.temp) + 'F';
+  //selecting the image
+  if(data.weather[0].main == 'Clouds') {
+    weatherIcon.src = './assets/weather/clouds.gif';
+  } 
+  else if(data.weather[0].main == 'Clear') {
+    weatherIcon.src = './assets/weather/clear.gif';
+  } 
+  else if(data.weather[0].main == 'Rain') {
+    weatherIcon.src = './assets/weather/rain.gif';
+  } 
+  else if(data.weather[0].main == 'Drizzle') {
+    weatherIcon.src = './assets/weather/drizzle.gif';
+  } 
+  else if(data.weather[0].main == 'Mist') {
+    weatherIcon.src = './assets/weather/mist.gif';
+  }
+  else if(data.weather[0].main == 'Thunderstorm') {
+    weatherIcon.src = './assets/weather/thunderstorm.gif';
+  }
+  else if(data.weather[0].main == 'Snow') {
+    weatherIcon.src = './assets/weather/snow.gif';
+  }
 }
-let apiKey = 'acd5af07cb8f29c02d28a51e24e9a183aaa6593103c9c70f0caeb97e';
-json(`https://api.ipdata.co?api-key=${apiKey}`).then(data => {
-  console.log(data.ip);
-  console.log(data.city);
-  console.log(data.country_code);
-  // so many more properties
-  getInfo()
-});
 
 
-
-async function getInfo() {
-
-}
-
-
-
+getInfo('lindenhurst', 'US')

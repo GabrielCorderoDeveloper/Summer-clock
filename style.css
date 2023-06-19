@@ -19,6 +19,26 @@ body {
     transition: 1.5s;
     backdrop-filter: blur(4px);
 }
+
+/* Weather --------------------->*/
+.weather-conatiner {
+    background-color: rgba(81, 177, 255, 0.6);
+    border-radius: 25px;
+    animation: blur 1s ease-in-out;
+}
+
+.weather-conatiner > div {
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: rgb(42, 73, 102);
+}
+
+.weather-conatiner img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
 /* Clock ----------------------> */
 .clock {
     width: 300px;
@@ -185,6 +205,11 @@ body {
 @keyframes down {
     0% { transform: translateY(100px); opacity: 0.5;  }
     100% { transform: translateY(0px); opacity: 1; }
+}
+
+@keyframes blur {
+    0% {   filter: blur(30px);  }
+    100% {   filter: blur(0px); }
 }
 
 /* Social Media ----------------------> */
